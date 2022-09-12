@@ -1,3 +1,5 @@
+# importing libraries
+
 import random
 from tkinter import N
 import pyodbc
