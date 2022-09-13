@@ -9,10 +9,15 @@ At end of every game session you can see a summary statistics of your game sessi
 The system is designed to give you a score on how close your guess is from the randomized number. The scoring rubric is as follows:
 
 -Correct guess = 5 points
+
 -within 1 of the correct number without going over = 3 points
+
 -within 2 of the correct number without going over = 2 points
+
 -within 3 of the correct number without going over = 1 point
+
 -higher than the correct number = -1 point
+
 -all other possibilities = 0 points
 
 Game Rules:
