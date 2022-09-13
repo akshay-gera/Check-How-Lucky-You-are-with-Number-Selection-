@@ -1,4 +1,4 @@
-# importing libraries
+# Importing libraries
 
 import random
 from tkinter import N
@@ -54,24 +54,24 @@ while True:
     # Putting all the accepted values under the try branch to avoid exceptions when user inputs erroneous values (will go to except argument then)
     try:
         # The main welcome statement for the user whic asks for user input
-        user_guess=input('Enter a guess number between 1 to 20 or Press Q to quit\t')
+        user_guess=input('Enter a guess number between 1 to 20 or Press Q to quit: \t')
 
         # If user plans to quit the game, only specific input can get user out of the game
         if user_guess in ['Q','q']:
-            print('Goodbye')
+            print('Goodbye', '\n' 'Thanks for playing. \n')
             
-            print('________________________________\n'
-
             # Summary statistics for the session will be displayed
-            'Thanks for playing.\n','\n',
-            'Your stats this session:\n'
-            '#Correct guesses:\t',sum(Match_list),'\n',
-            '#Guesses attempted:\t',GamePlayNumber,'\n',
-            'Points Scored:\t',sum(Points_Earned),'\n','\n',
+            print(
+            '----Your stats this session----\n', '\n'
+            'Number of Guesses Made=',GamePlayNumber,'\n'
+            'Number of Correct Guesses=',sum(Match_list),'\n'
+            'Points Scored in This Session=',sum(Points_Earned),'\n','\n',
             'Player Average(per session)\n'
-            'Avg# Correct guesses per session:\t', int(myinsertcursor.execute("select SUM(Match) from GuessStats").fetchone()[0])/GameSessionNumber,'\n'
-            'Avg# Guesses attempted per session:\t', int(myinsertcursor.execute("select COUNT(*) from GuessStats").fetchone()[0])/GameSessionNumber,'\n',
-            'Avg Points Scored per Session:\t', int(myinsertcursor.execute("select SUM(PointsScored) from GuessStats").fetchone()[0])/GameSessionNumber , '\n'
+            # Executing SQL queries to compute average statistics and printing them out in python
+            # Fetchone enables us to get the desired metric from SQL query in python
+            'Avg No. of Correct guesses per session=', int(myinsertcursor.execute("select SUM(Match) from GuessStats").fetchone()[0])/GameSessionNumber,'\n'
+            'Avg No. of Guesses attempted per session=', int(myinsertcursor.execute("select COUNT(*) from GuessStats").fetchone()[0])/GameSessionNumber,'\n'
+            'Avg Points Scored per Session=', int(myinsertcursor.execute("select SUM(PointsScored) from GuessStats").fetchone()[0])/GameSessionNumber , '\n'
             '________________________________\n')
             
             # While loop breaks right away when Q/q is inputted
@@ -93,18 +93,19 @@ while True:
             Points_Earned.append(Points)
             Match_list.append(match)
             
-            print('Game Session Number:\t', GameSessionNumber,'\n' 
-                    'Guess Number:\t', GamePlayNumber, '\n',
-                    '\n'
-                    'This Guess\n',
-                    'Your Guess:\t',user_guess,'\n'
-                    'Correct Number:\t',seek_number,'\n',
-                    'Points Earned:\t', Points,'\n' '\n'
-                    '________________________________\n'
-                    'Session Summary\n'
-                    'Correct Guesses:\t',sum(Match_list),'\n',
-                    'Total Points this session:\t',sum(Points_Earned),'\n'
-                    '_________________________________')
+            print('________________________________________________')
+            print('Game Session Number>>', GameSessionNumber,'\n' 
+                    'Number of Guesses Made in Current Session>>', GamePlayNumber,
+                    '\n_________________________________________________' ,'\n'
+                    '\n ----Points Summary---- \n'
+                    'Your Selected Number=',user_guess,'\n'
+                    'Correct Number=',seek_number,'\n'
+                    'Points Earned=', Points,'\n'
+                    
+                    '\n ----Session Summary----\n'
+                    'Correct Guesses=',sum(Match_list),'\n'
+                    'Total Points this session=',sum(Points_Earned),'\n'
+                    )
             # Try condition added to capture if there is any exception occuring while inserting the data into SQL database
             try:
                 # Inserting the user input values and stats generated into SQL database
@@ -112,7 +113,8 @@ while True:
                                                 INSERT INTO AkshayGeraGuessingStats.dbo.GuessStats (GameSessionNumber, GamePlayNumber, Guess, SeekNumber, Match, PointsScored) 
                                                 VALUES (?,?,?,?,?,?)""", GameSessionNumber, GamePlayNumber, user_guess, seek_number, match, Points).rowcount 
                 # confirmation generated for successful push into SQL database
-                print('Rows inserted: ' + str(count))
+                print('(Row inserted in SQL Table)',
+                 '\n_____________________________________________________')
             
             # Returns exception value as a string for better comprehension of errors occuring during SQL push
             except Exception as e:
