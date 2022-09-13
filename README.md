@@ -25,9 +25,13 @@ Game Rules:
 2) Enter Q or q to quit game
 3) Any other input numerical/character is not accepted
 
+
+
 ## Sample screenshot of how a game session looks like in python 
 
 <img width="416" alt="image" src="https://user-images.githubusercontent.com/98545133/190002729-f0d98f9c-a34b-4552-96b7-d4314996b624.png">
+
+
 
 
 ## Sample screenshot of how after 3 sessions my SQL table looks like
