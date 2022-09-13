@@ -1,5 +1,5 @@
 # So you think you're lucky with numbers?
-## Check rour luck today, before buying your next Lotto Max ticket! :D
+## Check your luck today, before buying your next Lotto Max ticket! :D
 
 You make a guess between numbers 1-20, and the system will match how close you are to computer's randomized choice of number (Seek Number). If you see a lot of matches on a particular day, maybe its your lucky day. Better to hit the lottery store next. :D
 For your each selection, the data  generated flows in your SQL Database to record each game you've played. This is a cool feature for you have history of your scores.
