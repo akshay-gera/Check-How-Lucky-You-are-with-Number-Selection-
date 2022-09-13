@@ -2,8 +2,10 @@
 ## Check your luck today, before buying your next Lotto Max ticket! :D
 
 You make a guess between numbers 1-20, and the system will match how close you are to computer's randomized choice of number (Seek Number). If you see a lot of matches on a particular day, maybe its your lucky day. Better to hit the lottery store next. :D
+
 For your each selection, the data  generated flows in your SQL Database to record each game you've played. This is a cool feature for you have history of your scores.
 At end of every game session you can see a summary statistics of your game session. 
+
 The system is designed to give you a score on how close your guess is from the randomized number. The scoring rubric is as follows:
 
 -Correct guess = 5 points
